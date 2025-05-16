@@ -17,11 +17,20 @@ const Navbar = () => {
         </div>
 
         <ul className="flex space-x-6 text-md text-gray-300">
-          <a className="text-gray-300 hover:text-white cursor-pointer" href="/">Inicio</a>
-          <a className="text-gray-300 hover:text-white cursor-pointer" href="/#projects">Proyectos</a>
-          <a className="text-gray-300 hover:text-white cursor-pointer" href="/#certifications">Certificaciones</a>
-          <a className="text-gray-300 hover:text-white cursor-pointer" href="/#skills">Skills</a>
-          <a className="text-gray-300 hover:text-white cursor-pointer" href="/#contact">Contacto</a>
+          <a
+            rel="noopener noreferrer"
+            style={{ color: 'white' }}
+            className="text-gray-300 hover:text-white cursor-pointer" href="/">Inicio</a>
+          <a
+            rel="noopener noreferrer"
+            style={{ color: 'white' }}
+            className="text-gray-300 hover:text-white cursor-pointer" href="/#projects">Proyectos</a>
+          <a rel="noopener noreferrer"
+            style={{ color: 'white' }} className="text-gray-300 hover:text-white cursor-pointer" href="/#certifications">Certificaciones</a>
+          <a rel="noopener noreferrer"
+            style={{ color: 'white' }} className="text-gray-300 hover:text-white cursor-pointer" href="/#skills">Skills</a>
+          <a rel="noopener noreferrer"
+            style={{ color: 'white' }} className="text-gray-300 hover:text-white cursor-pointer" href="/#contact">Contacto</a>
         </ul>
       </nav>
     </header>
