@@ -16,12 +16,12 @@ const Contact = () => {
               <p className="flex items-center gap-2">
                 <span>📧</span>
                 <a href="mailto:tu@email.com" className="text-blue-400 hover:text-blue-300">
-                  tu@email.com
+                  work@pabloveralopez.com
                 </a>
               </p>
               <p className="flex items-center gap-2">
                 <span>📱</span>
-                <span className="text-gray-300">+34 123 456 789</span>
+                <span className="text-gray-300">+34 667218105</span>
               </p>
             </div>
           </div>

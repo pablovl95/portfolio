@@ -1,4 +1,5 @@
 import React from "react";
+import cv from '../assets/cv.pdf';
 
 const Hero = () => {
   return (
@@ -13,7 +14,7 @@ const Hero = () => {
             href="https://www.linkedin.com/in/pabloveralopez"
             target="_blank"
             rel="noopener noreferrer"
-            style={{backgroundColor: '#2563eb', color: 'white'}}
+            style={{ backgroundColor: '#2563eb', color: 'white' }}
             className="w-full px-6 py-3 rounded-md font-medium transition hover:opacity-90 text-center"
           >
             Linkedin →
@@ -22,16 +23,22 @@ const Hero = () => {
             href="https://github.com/Pablovl95"
             target="_blank"
             rel="noopener noreferrer"
-            style={{backgroundColor: '#2563eb', color: 'white'}}
+            style={{ backgroundColor: '#2563eb', color: 'white' }}
             className="w-full px-6 py-3 rounded-md font-medium transition hover:opacity-90 text-center"
           >
             Github →
           </a>
         </div>
         <div className="flex justify-center w-1/2 mx-auto">
-          <button className="bg-white w-full px-6 py-3 rounded-md font-medium transition text-black hover:bg-gray-100">
+          <a
+            href={cv}
+            download="cv.pdf"
+            style={{ color: 'black' }}
+            className="bg-white w-full px-6 py-3 rounded-md font-medium transition text-black hover:bg-gray-100 text-center block"
+          >
             Descargar CV
-          </button>
+          </a>
+
         </div>
 
         <div className="flex justify-center gap-5 text-3xl mt-10">
