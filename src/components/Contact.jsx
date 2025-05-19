@@ -4,6 +4,7 @@ const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    subject: "",
     message: "",
   });
 
@@ -11,7 +12,7 @@ const Contact = () => {
     e.preventDefault();
     // Here you can add your own form submission logic
     console.log("Form submitted:", formData);
-    setFormData({ name: "", email: "", message: "" });
+    setFormData({ name: "", email: "", subject: "", message: "" });
   };
 
   const handleChange = (e) => {
@@ -45,7 +46,7 @@ const Contact = () => {
               </p>
             </div>
           </div>
-          <div className="max-w-2xl mx-auto">
+          <div className="w-full">
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-1">
@@ -76,6 +77,20 @@ const Contact = () => {
                 />
               </div>
               <div>
+                <label htmlFor="subject" className="block text-sm font-medium text-gray-300 mb-1">
+                  Asunto
+                </label>
+                <input
+                  type="text"
+                  id="subject"
+                  name="subject"
+                  value={formData.subject}
+                  onChange={handleChange}
+                  required
+                  className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
+              </div>
+              <div>
                 <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-1">
                   Mensaje
                 </label>
@@ -91,9 +106,10 @@ const Contact = () => {
               </div>
               <button
                 type="submit"
+                style={{ backgroundColor: "#007bff" }}
                 className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md transition duration-300"
               >
-                Enviar mensaje
+                Enviar
               </button>
             </form>
           </div>
