@@ -23,9 +23,9 @@ const Certifications = () => {
   ];
 
   return (
-    <section className="min-w-screen py-16 bg-[#1a1a1a] text-white" id="certifications">
-      <div className="max-w-4xl mx-auto px-4">
-        <h2 className="text-3xl font-bold mb-12">Certificaciones</h2>
+    <section className="min-w-screen py-8 bg-[#1a1a1a] text-white" id="certifications">
+      <div className="max-w-7xl mx-auto ">
+        <h2 className="text-4xl font-bold text-white-300 mb-8">Certificaciones</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {certifications.map((cert) => (
             <div key={cert.title} className="bg-gray-800 p-6 rounded-lg">

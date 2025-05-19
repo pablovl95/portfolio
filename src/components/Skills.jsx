@@ -1,6 +1,6 @@
 import React from 'react';
 import { FaHtml5, FaCss3Alt, FaJs, FaReact, FaPhp, FaNodeJs, FaGitAlt, FaGithub, FaTerminal, FaWordpress, FaNpm, FaJava } from 'react-icons/fa';
-import { SiTailwindcss, SiExpress, SiMongodb, SiMysql, SiNextdotjs,  SiPython, SiAstro, SiTypescript  } from 'react-icons/si';
+import { SiTailwindcss, SiExpress, SiMongodb, SiMysql, SiNextdotjs, SiPython, SiAstro, SiTypescript } from 'react-icons/si';
 import { VscVscode } from 'react-icons/vsc';
 import { BiLogoSpringBoot } from "react-icons/bi";
 const skills = [
@@ -47,7 +47,7 @@ const skills = [
       { name: 'Git', icon: <FaGitAlt className="text-orange-400" /> },
       { name: 'GitHub', icon: <FaGithub className="text-white" /> },
       { name: 'Terminal', icon: <FaTerminal className="text-gray-300" /> },
-      { name: 'VSCode', icon: <VscVscode  className="text-blue-400" /> },
+      { name: 'VSCode', icon: <VscVscode className="text-blue-400" /> },
       { name: 'npm', icon: <FaNpm className="text-red-500" /> },
       { name: 'WordPress', icon: <FaWordpress className="text-blue-300" /> },
     ],
@@ -56,18 +56,18 @@ const skills = [
 
 const Skills = () => {
   return (
-    <section className="py-16 bg-[#1a1a1a] text-white" id="skills">
-      <div className="max-w-5xl mx-auto px-4">
-        <h2 className="text-3xl font-bold text-yellow-300 mb-10 text-center">Skills</h2>
+    <section className="w-full py-8 bg-[#1a1a1a] text-white" id="skills">
+      <div className="max-w-7xl mx-auto px-4">
+        <h2 className="text-4xl font-bold text-white-300 mb-8">Skills</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {skills.map((group) => (
-            <div key={group.group} className="bg-[#232323] rounded-xl p-6 shadow-lg">
+            <div key={group.group} className="bg-gray-800 rounded-xl p-6 shadow-md">
               <h3 className={`text-2xl font-semibold mb-6 ${group.color}`}>{group.group}</h3>
               <div className="grid grid-cols-3 gap-6">
                 {group.items.map((item) => (
                   <div key={item.name} className="flex flex-col items-center">
                     <span className="text-4xl mb-2">{item.icon}</span>
-                    <span className="text-sm text-gray-200 text-center">{item.name}</span>
+                    <span className="text-sm text-gray-300 text-center">{item.name}</span>
                   </div>
                 ))}
               </div>
