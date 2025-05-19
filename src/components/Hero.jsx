@@ -5,11 +5,11 @@ import { SiExpress, SiSpringboot } from 'react-icons/si';
 
 const Hero = () => {
   return (
-    <section className="min-w-screen py-16 bg-[#1a1a1a] text-white mt-15" id="home">
+    <section className="min-w-screen  sm:py-8 bg-[#1a1a1a] text-white" id="home">
       <div className="max-w-5xl mx-auto px-4 text-center">
-        <h2 className="text-7xl font-bold text-yellow-300 tracking-wider">Software Developer</h2>
-        <h2 className="text-7xl font-extrabold mt-2 mb-4">Pablo Vera López</h2>
-        <p className="text-gray-400 text-xl mb-8">Software Developer</p>
+        <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-yellow-300 tracking-wider">Software Developer</h2>
+        <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold mt-2 mb-4">Pablo Vera López</h2>
+        <p className="text-gray-400 text-lg sm:text-xl mb-8">Software Developer</p>
 
         <div className="flex justify-center gap-4 mb-4 w-1/2 mx-auto">
           <a

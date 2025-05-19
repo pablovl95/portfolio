@@ -4,8 +4,10 @@ import Hero from "./components/Hero";
 import About from "./components/About";
 import Projects from "./components/Projects";
 import Skills from "./components/Skills";
+import Certifications from "./components/Certifications";
 import Contact from "./components/Contact";
 import ScrollToTop from "./components/ScrollToTop";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -15,9 +17,11 @@ function App() {
         <Hero />
         <About />
         <Projects />
+        <Certifications />
         <Skills />
         <Contact />
       </main>
+      <Footer />
       <ScrollToTop />
     </div>
   );

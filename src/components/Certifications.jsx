@@ -1,27 +1,7 @@
 import React from "react";
+import { certifications } from '../data/certifications';
 
 const Certifications = () => {
-  const certifications = [
-    {
-      title: "AWS Certified Developer",
-      organization: "Amazon Web Services",
-      date: "2023",
-      credential: "Credencial: AWS-DEV-123456"
-    },
-    {
-      title: "Professional Scrum Master I",
-      organization: "Scrum.org",
-      date: "2023",
-      credential: "Credencial: PSM-I-123456"
-    },
-    {
-      title: "Angular Developer Certificate",
-      organization: "Google",
-      date: "2022",
-      credential: "Credencial: GCP-ANG-123456"
-    }
-  ];
-
   return (
     <section className="min-w-screen py-8 bg-[#1a1a1a] text-white" id="certifications">
       <div className="max-w-7xl mx-auto ">
