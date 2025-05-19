@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import emailjs from "@emailjs/browser";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -7,37 +6,12 @@ const Contact = () => {
     email: "",
     message: "",
   });
-  const [status, setStatus] = useState({ type: "", message: "" });
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    setStatus({ type: "loading", message: "Enviando..." });
-
-    try {
-      await emailjs.send(
-        import.meta.env.VITE_EMAIL_SERVICE,
-        import.meta.env.VITE_EMAIL_TEMPLATE,
-        {
-          from_name: formData.name,
-          from_email: formData.email,
-          message: formData.message,
-          to_email: import.meta.env.VITE_EMAIL_TO,
-          subject: import.meta.env.VITE_FORM_SUBJECT,
-        },
-        import.meta.env.VITE_EMAIL_USER
-      );
-
-      setStatus({
-        type: "success",
-        message: import.meta.env.VITE_FORM_SUCCESS_MESSAGE,
-      });
-      setFormData({ name: "", email: "", message: "" });
-    } catch (error) {
-      setStatus({
-        type: "error",
-        message: import.meta.env.VITE_FORM_ERROR_MESSAGE,
-      });
-    }
+    // Here you can add your own form submission logic
+    console.log("Form submitted:", formData);
+    setFormData({ name: "", email: "", message: "" });
   };
 
   const handleChange = (e) => {
@@ -117,24 +91,10 @@ const Contact = () => {
               </div>
               <button
                 type="submit"
-                disabled={status.type === "loading"}
-                className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md transition duration-300 disabled:opacity-50"
+                className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md transition duration-300"
               >
-                {status.type === "loading" ? "Enviando..." : "Enviar mensaje"}
+                Enviar mensaje
               </button>
-              {status.message && (
-                <div
-                  className={`mt-4 p-4 rounded-md ${
-                    status.type === "success"
-                      ? "bg-green-100 text-green-700"
-                      : status.type === "error"
-                      ? "bg-red-100 text-red-700"
-                      : ""
-                  }`}
-                >
-                  {status.message}
-                </div>
-              )}
             </form>
           </div>
         </div>
