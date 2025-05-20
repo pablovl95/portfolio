@@ -51,7 +51,7 @@ export const projects = [
   },
   {
     "title": "Calculadora de Interés Compuesto",
-    "description": "Aplicación de escritorio con interfaz gráfica en Java usando Tkinter para calcular el interés compuesto.",
+    "description": "Aplicación de escritorio con interfaz gráfica en Java usando JFrame para calcular el interés compuesto.",
     "tech": [
       { name: "Java", icon: <FaJava className="text-red-500" /> },
       { name: "Python", icon: <SiPython className="text-yellow-400" /> },

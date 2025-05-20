@@ -48,7 +48,7 @@ const Projects = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-block w-full sm:w-auto text-center px-6 py-2 rounded-md transition-colors flex items-center justify-center gap-2"
-                  style={{ backgroundColor: "#007bff" }}
+                  style={{ backgroundColor: "#007bff", color: "#fff" }}
                 >
                   Ver proyecto
                 </a>

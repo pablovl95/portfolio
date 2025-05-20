@@ -1,4 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { Editor } from 'primereact/editor';
+
+const API_URL = import.meta.env.VITE_API_URL;
+const API_TOKEN = import.meta.env.VITE_API_TOKEN;
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -7,18 +11,66 @@ const Contact = () => {
     subject: "",
     message: "",
   });
+  const [status, setStatus] = useState({ type: "", message: "" });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showEditor, setShowEditor] = useState(true);
 
-  const handleSubmit = (e) => {
+  useEffect(() => {
+    if (status.type === 'success' && status.message) {
+      const timer = setTimeout(() => {
+        setStatus({ type: '', message: '' });
+      }, 3500);
+      return () => clearTimeout(timer);
+    }
+  }, [status]);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Here you can add your own form submission logic
-    console.log("Form submitted:", formData);
-    setFormData({ name: "", email: "", subject: "", message: "" });
+    setIsSubmitting(true);
+    setStatus({ type: "", message: "" });
+
+    try {
+      const response = await fetch(`${API_URL}/api/contact`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-api-token': API_TOKEN
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setStatus({ type: 'success', message: 'Mensaje enviado correctamente' });
+        setFormData({ name: "", email: "", subject: "", message: "" });
+      } else {
+        setStatus({ 
+          type: 'error', 
+          message: data.error || 'Error al enviar el mensaje'
+        });
+      }
+    } catch (error) {
+      setStatus({ 
+        type: 'error', 
+        message: 'Error de conexión. Por favor, inténtalo de nuevo.' 
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleEditorChange = (e) => {
+    setFormData({
+      ...formData,
+      message: e.htmlValue
     });
   };
 
@@ -36,7 +88,7 @@ const Contact = () => {
             <div className="space-y-2">
               <p className="flex items-center gap-2 text-sm sm:text-base">
                 <span>📧</span>
-                <a href="mailto:tu@email.com" className="text-blue-400 hover:text-blue-300">
+                <a href="mailto:work@pabloveralopez.com" className="text-blue-400 hover:text-blue-300">
                   work@pabloveralopez.com
                 </a>
               </p>
@@ -47,7 +99,12 @@ const Contact = () => {
             </div>
           </div>
           <div className="w-full">
-            <form onSubmit={handleSubmit} className="space-y-4">
+            {status.message && (
+              <div className={`mb-4 p-4 rounded-md ${status.type === 'success' ? 'bg-green-500' : 'bg-red-500'}`}>
+                {status.message}
+              </div>
+            )}
+            <form onSubmit={handleSubmit} className="space-y-4 w-full">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-1">
                   Nombre
@@ -94,22 +151,21 @@ const Contact = () => {
                 <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-1">
                   Mensaje
                 </label>
-                <textarea
-                  id="message"
-                  name="message"
+                <Editor
                   value={formData.message}
-                  onChange={handleChange}
-                  required
-                  rows="4"
-                  className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                ></textarea>
+                  onTextChange={handleEditorChange}
+                  style={{ height: '160px', border: 'none' }}
+                  className="rounded-md bg-gray-700"
+                  showHeader={false}
+                />
               </div>
               <button
                 type="submit"
-                style={{ backgroundColor: "#007bff" }}
-                className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md transition duration-300"
+                disabled={isSubmitting}
+                style={{ backgroundColor: '#007bff' }}
+                className={`w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md transition duration-300 ${isSubmitting ? 'opacity-50 cursor-not-allowed' : ''}`}
               >
-                Enviar
+                {isSubmitting ? 'Enviando...' : 'Enviar mensaje'}
               </button>
             </form>
           </div>
